@@ -16,13 +16,16 @@ Team strengths:
 How to overcome obstacles:
 
 Schedule Expectations (When are we available to work together and individually?):
-  * Dec 7     
+  * Dec 7
+    
   
   * Dec 8
   
   * Dec 9
+      * __Project time 3-4pm MST__
   
   * Dec 10
+      * __Project time 1-4pm MST__
   
   * Dec 11
   
@@ -33,9 +36,10 @@ Schedule Expectations (When are we available to work together and individually?)
   * Dec 14
   
   * Dec 15
-  
+    * __Project time 1-4pm MST__
+    
   * Dec 16
-    * _Project
+    * __Project time 1-4pm MST__
     * __DUE @ 6pm__
 
 Communication Expectations (How and often will we communicate? How do we keep lines of communication open?):
