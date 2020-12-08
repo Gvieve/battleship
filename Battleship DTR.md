@@ -106,20 +106,40 @@
       * __Project time 1-4pm MST__
       * __DUE @ 6pm__
 
-Communication Expectations (How and often will we communicate? How do we keep lines of communication open?):
+### Communication Expectations (How and often will we communicate? How do we keep lines of communication open?):
+  * We are meeting every morning and almost every evening
+  * If either one of us has an idea throughout the day send a message on slack (anytime of day is ok for both)
+  * Exchanged numbers, can communicate via text when needed
 
-Abilities Expectations (Technical strengths and areas for desired improvement):
+### Abilities Expectations (Technical strengths and areas for desired improvement):
+  * Caryn
+    
+    * Good at debugging
+    * Each method is only doing one thing - design
+    * Writing tests for every single method
+    * Improve - Interacting from the command line
+    
+  * Genevieve
+    * Pseudo coding
+    * Improve - How objects interact with each other when there are many
 
-Workload Expectations (What features do we each want to work on?):
+### Workload Expectations (What features do we each want to work on?):
 
-Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests):
+  * As we begin we will approach everything together
+  * Follow through on commitments when made
 
-Expectations for giving and receiving feedback:
+### Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests):
+  
+  * Dont merge your own pull requests
+  * Use Tuple to share and code together
+  * Google calendar for schedule and touch bases
+  * Google doc of the project requirements and specs
+  * Research if there is a way to visualize the information for the project (objects interacting)
+  * During meetings have time set aside for code review only to merge accordingly
 
-Agenda to discuss project launch:
+### Expectations for giving and receiving feedback:
 
-Ideas:
+  * Be specific, actionable and kind when giving and receiving feedback
 
-Tools:
 
-Additional Notes:
+### Additional Notes:
