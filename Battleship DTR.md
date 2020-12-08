@@ -20,6 +20,7 @@ Schedule Expectations (When are we available to work together and individually?)
 |Date  |Mtg Name  |Start   |End   |Notes   |
 |---|---|---|---|---|
 |Mon 12/7    |   |   |   |   |
+|   |   |   |   |   |   |   |
 |Tue 12/8    |   |   |   |   |
 |Wed 12/9    |   |   |   |   |
 |Thu 12/10   |   |   |   |   |
