@@ -81,6 +81,7 @@
   * Friday Dec 11
       * __7:45-8:45am checkin__
       * __5:00-6:00pm checkin__
+      * __Take the time to re-DTR__
   
   * Saturday Dec 12
       * __10:00am-2:00pm checkin (lunch break some point)__
