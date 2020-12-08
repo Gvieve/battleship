@@ -16,6 +16,21 @@ Team strengths:
 How to overcome obstacles:
 
 Schedule Expectations (When are we available to work together and individually?):
+
+|Date  |Mtg Name  |Start   |End   |Notes   |
+|---|---|---|---|---|
+|Mon 12/7    |   |   |   |   |
+|Tue 12/8    |   |   |   |   |
+|Wed 12/9    |   |   |   |   |
+|Thu 12/10   |   |   |   |   |
+|Fri 12/11   |   |   |   |   |
+|Sat 12/12   |   |   |   |   |
+|Sun 12/13   |   |   |   |   |
+|Mon 12/14   |   |   |   |   |
+|Tue 12/15   |   |   |   |   |
+|Wed 12/16   |   |   |   |   |
+
+
   * Monday Dec 7
      * __6:30-8:30pm checkin__
         * Goal - Finish DTR
