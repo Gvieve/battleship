@@ -16,7 +16,11 @@ class Cell
   end
 
   def fired_upon?
-    false
+    if ship.health == ship.length
+      false
+    else
+      true
+    end
   end
 
   def fire_upon
