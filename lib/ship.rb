@@ -11,7 +11,7 @@ attr_reader :name,
   def health
     @health
   end
-
+ 
   def sunk?
     if health == 0
       true
