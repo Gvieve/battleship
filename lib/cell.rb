@@ -26,4 +26,16 @@ class Cell
   def fire_upon
     ship.hit
   end
+
+  def render
+    if ship.nil? == true
+      "."
+    elsif fired_upon? == true && ship.nil? == false
+      "M"
+    elsif fired_upon? == true && ship.health == 0
+      "X"
+    else fired_upon? == true && ship.nil? == true
+      "H"
+    end
+  end
 end
