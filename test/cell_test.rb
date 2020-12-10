@@ -14,7 +14,6 @@ class CellTest < Minitest::Test
   end
 
   def test_cell_has_a_ship
-    skip
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
 
@@ -24,7 +23,6 @@ class CellTest < Minitest::Test
   end
 
   def test_it_can_be_fired_upon
-    # skip
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
 
@@ -34,16 +32,14 @@ class CellTest < Minitest::Test
     cell.fire_upon
     assert_equal 2, cell.ship.health
     assert_equal true, cell.fired_upon?
-    assert_equal "M", cell.render
   end
 
   def test_the_cell_renders_on_the_screen
-    # skip
     cell_1 = Cell.new("B4")
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
-    cell_1.render
 
+    cell_1.render
     assert_equal ".", cell_1.render
 
     cell_1.fire_upon
@@ -53,7 +49,6 @@ class CellTest < Minitest::Test
   end
 
   def test_render_has_optional_argument
-    # skip
     cell_1 = Cell.new("B4")
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
@@ -69,6 +64,4 @@ class CellTest < Minitest::Test
     assert_equal "H", cell_2.render
   end
 
-  # commented out lines 46-58 in cell class to figure out why conditional
-  # order is always showing "S". This is where we are stuck. :
 end

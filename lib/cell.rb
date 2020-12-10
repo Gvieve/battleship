@@ -18,15 +18,9 @@ class Cell
 
   def fired_upon?
      @fired_upon
-      # ship.health == ship.length
-      # false
-    # else
-    #   true
-    # end
   end
 
   def fire_upon
-    # require "pry"; binding.pry
     if ship.nil? == true
       @fired_upon = true
     else ship.hit
@@ -34,32 +28,17 @@ class Cell
     end
   end
 
-  def render(option = false)
-    # require "pry"; binding.pry
-    if @ship && option == true
-      # require "pry"; binding.pry
+  def render(show_ship = false)
+    if show_ship && @ship && !@fired_upon
       "S"
-    elsif @fired_upon == false
-      "."
-    elsif (@fired_upon == true) && empty? == true
+    elsif @ship && @ship.sunk?
+      "X"
+    elsif @fired_upon && empty?
       "M"
-    elsif @fired_upon == true && empty? == false
+    elsif @fired_upon && !empty?
       "H"
     else
-      "X"
+      "."
     end
-    #
-
-    # if @ship && option == true
-    #   "S"
-    # elsif ship.nil? == false && ship.sunk? == true
-    #   "X"
-    # elsif (@fired_upon == true) && empty? == true
-    #   "M"
-    # elsif @fired_upon == true && empty? == false
-    #   "H"
-    # else @fired_upon == false
-    #   "."
-    # end
   end
 end
