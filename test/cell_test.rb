@@ -14,7 +14,7 @@ class CellTest < Minitest::Test
   end
 
   def test_cell_has_a_ship
-    # skip
+    skip
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
 
@@ -24,7 +24,7 @@ class CellTest < Minitest::Test
   end
 
   def test_it_can_be_fired_upon
-    skip
+    # skip
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
 
@@ -50,10 +50,25 @@ class CellTest < Minitest::Test
     cell_1.render
 
     assert_equal "M", cell_1.render
+  end
 
+  def test_render_has_optional_argument
+    # skip
+    cell_1 = Cell.new("B4")
+    cell_2 = Cell.new("C3")
+    cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
     cell_2.render
 
     assert_equal ".", cell_2.render
+    cell_2.render(true)
+
+    assert_equal "S", cell_2.render(true)
+
+    cell_2.fire_upon
+    assert_equal "H", cell_2.render
   end
+
+  # commented out lines 46-58 in cell class to figure out why conditional
+  # order is always showing "S". This is where we are stuck. :
 end

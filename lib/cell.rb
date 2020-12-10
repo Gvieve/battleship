@@ -34,16 +34,32 @@ class Cell
     end
   end
 
-  def render
+  def render(option = false)
     # require "pry"; binding.pry
-    if ship.nil? == false && ship.sunk? == true
-      "X"
+    if @ship && option == true
+      # require "pry"; binding.pry
+      "S"
+    elsif @fired_upon == false
+      "."
     elsif (@fired_upon == true) && empty? == true
       "M"
-    elsif @fired_upon == true && ship.nil? == true
+    elsif @fired_upon == true && empty? == false
       "H"
     else
-      "."
+      "X"
     end
+    #
+
+    # if @ship && option == true
+    #   "S"
+    # elsif ship.nil? == false && ship.sunk? == true
+    #   "X"
+    # elsif (@fired_upon == true) && empty? == true
+    #   "M"
+    # elsif @fired_upon == true && empty? == false
+    #   "H"
+    # else @fired_upon == false
+    #   "."
+    # end
   end
 end
