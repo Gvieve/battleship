@@ -28,4 +28,24 @@ class Board
   def valid_placement?(ship, coordinates)
     coordinates.count == ship.length
   end
+
+  def letters
+    board_letters = []
+    cells.keys.each do |letter|
+      board_letters << letter[0]
+    end
+    board_letters.uniq
+  end
+
+  def consecutive_letters
+    consecutive_letters = []
+    letters.each_cons(3) do |letter|
+      consecutive_letters << letter
+    end
+
+    letters.each_cons(2) do |letter|
+      consecutive_letters << letter
+    end
+    consecutive_letters
+  end
 end
