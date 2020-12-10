@@ -14,7 +14,6 @@ class CellTest < Minitest::Test
   end
 
   def test_cell_has_a_ship
-    skip
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
 
@@ -24,12 +23,12 @@ class CellTest < Minitest::Test
   end
 
   def test_it_can_be_fired_upon
-    skip
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
 
     cell.place_ship(cruiser)
     assert_equal false, cell.fired_upon?
+
     cell.fire_upon
     assert_equal 2, cell.ship.health
     assert_equal true, cell.fired_upon?
@@ -41,17 +40,28 @@ class CellTest < Minitest::Test
     cruiser = Ship.new("Cruiser", 3)
 
     cell_1.render
-
     assert_equal ".", cell_1.render
 
     cell_1.fire_upon
     cell_1.render
 
     assert_equal "M", cell_1.render
-    #
-    # cell_2.place_ship(cruiser)
-    # cell_2.render
-    #
-    # assert_equal ".", cell_2.render
   end
+
+  def test_render_has_optional_argument
+    cell_1 = Cell.new("B4")
+    cell_2 = Cell.new("C3")
+    cruiser = Ship.new("Cruiser", 3)
+    cell_2.place_ship(cruiser)
+    cell_2.render
+
+    assert_equal ".", cell_2.render
+    cell_2.render(true)
+
+    assert_equal "S", cell_2.render(true)
+
+    cell_2.fire_upon
+    assert_equal "H", cell_2.render
+  end
+
 end
