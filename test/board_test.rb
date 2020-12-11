@@ -30,24 +30,23 @@ class BoardTest < Minitest::Test
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
 
+    assert_equal false, board.ship_length_valid?(cruiser, ["A1", "A2"])
     assert_equal false, board.valid_placement?(cruiser, ["A1", "A2"])
     assert_equal false, board.valid_placement?(submarine, ["A2", "A3", "A4"])
   end
 
   def test_ship_has_valid_placement_letter_coordinates_consecutive
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
 
+    assert_equal [65, 67], board.coordinates_ords(["A1", "C1"])
+    assert_equal [[65, 66], [66, 67], [67, 68], [68, 69]], board.ordinates_consecutive(["A1", "C1"])
+    assert_equal false, board.ship_letter_coords_valid?(cruiser, ["A1", "C1"])
     assert_equal false, board.valid_placement?(submarine, ["A1", "C1"])
-    assert_equal [65, 67], board.coordinates_ords
-
-    assert_equal [[65, 66], [66, 67], [67, 68], [68, 69]], board.ordinates_consecutive
-    assert_equal false, board.valid_placement?(submarine, ["A1", "C1"])
+    assert_equal false, board.valid_placement?(submarine, ["C1", "B1"])
   end
-  # above test is passing, and not failing as expected
-  # we found out in valid_placement? that num_cons method conditional when
-  # evaluated has not actually run yet. We got cant find method error with .count
 
   def test_ship_has_valid_placement_number_coordinates_consecutive
     skip
@@ -55,10 +54,19 @@ class BoardTest < Minitest::Test
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
 
-    assert_equal false, board.valid_placement?(cruiser, ["A1", "A2"])
-    assert_equal [1, 2], board.coordinates_nums
-
-    assert_equal [[1, 2], [2, 3], [3, 4]], board.num_cons
+    assert_equal [1, 2, 4], board.coordinates_nums(["A1", "A2", "A4"])
+    assert_equal [[1, 2, 3], [2, 3, 4]], board.numbers_consecutive(["A1", "A2", "A4"])
+    assert_equal false, board.ship_number_coords_valid?(cruiser, ["A1", "A2", "A4"])
     assert_equal false, board.valid_placement?(cruiser, ["A1", "A2", "A4"])
+    assert_equal false, board.valid_placement?(cruiser, ["A3", "A2", "A1"])
+  end
+
+  def test_ship_coordinates_cant_be_diagonal
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+
+    assert_equal false, board.ship_diagonal_coords_valid?(cruiser, ["A1", "B2", "C3"])
+    assert_equal false, board.valid_placement?(cruiser, ["A1", "B2", "C3"])
   end
 end

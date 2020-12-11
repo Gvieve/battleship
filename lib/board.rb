@@ -2,7 +2,6 @@ class Board
   attr_reader :cells,
               :coordinates
   def initialize
-    @coordinates = coordinates
     @cells = {
              "A1" => Cell.new("A1"),
              "A2" => Cell.new("A2"),
@@ -27,7 +26,7 @@ class Board
     @cells.has_key?(coordinate)
   end
 
-  def coordinates_ords
+  def coordinates_ords(coordinates)
     ords = []
     coordinates.each do |coordinate|
       ords << coordinate.chop.ord
@@ -35,7 +34,7 @@ class Board
     ords.uniq
   end
 
-  def ordinates_consecutive
+  def ordinates_consecutive(coordinates)
     consecutive_letter_ordinals = []
     (65..69).each_cons(coordinates.count) do |n|
       consecutive_letter_ordinals << n
@@ -43,7 +42,8 @@ class Board
     consecutive_letter_ordinals
   end
 
-  def coordinates_nums
+  def coordinates_nums(coordinates)
+    # require "pry"; binding.pry
     nums = []
     coordinates.each do |coordinate|
       nums << coordinate[1..-1].to_i
@@ -51,8 +51,7 @@ class Board
     nums.uniq
   end
 
-# we are stuck here and on valid_placement?
-  def num_cons
+  def numbers_consecutive(coordinates)
     consecutive_numbers = []
     (1..4).each_cons(coordinates.count) do |n|
       consecutive_numbers << n
@@ -60,10 +59,33 @@ class Board
     consecutive_numbers
   end
 
+  def ship_length_valid?(ship, coordinates)
+    coordinates.count == ship.length
+  end
+
+  def ship_letter_coords_valid?(ship, coordinates)
+    (ordinates_consecutive(coordinates).include?(coordinates_ords(coordinates)) ||
+    (coordinates_ords(coordinates).count == 1))
+  end
+
+  def ship_number_coords_valid?(ship, coordinates)
+    (numbers_consecutive(coordinates).include?(coordinates_nums(coordinates)) ||
+    (coordinates_nums(coordinates).count == 1))
+  end
+
+  def ship_diagonal_coords_valid?(ship, coordinates)
+    (((ship_number_coords_valid?(ship, coordinates)) &&
+    (ship_letter_coords_valid?(ship, coordinates))) &&
+    (coordinates_ords(coordinates).count == 1))
+
+  end
+
   def valid_placement?(ship, coordinates)
-    require "pry"; binding.pry
+    # require "pry"; binding.pry
     @coordinates = coordinates
-    (coordinates.count == ship.length) &&
-    (num_cons.include?(coordinates_nums))
+    ((ship_length_valid?(ship, coordinates)) &&
+    (ship_letter_coords_valid?(ship, coordinates)) &&
+    (ship_number_coords_valid?(ship, coordinates)) &&
+    (ship_diagonal_coords_valid?(ship, coordinates)))
   end
 end
