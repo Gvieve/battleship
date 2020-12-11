@@ -42,64 +42,33 @@
   * Communicate with each other if we run into differences with approach about the project, schedule, or communication with another.
 
 ### Schedule Expectations (When are we available to work together and individually?):
+  * Created shared google calendar to track scheduled project time. 
 
-|Date  |Mtg Name  |Start   |End   |Notes/Goal   |
-|---|---|---|---|---|
-|Mon 12/7    |DTR/Iteration Review   |6:30 MST/8:30 EST pm   |8:30 MST / 10:30EST pm   |Finish DTR   |
-|   |   |   |   |   |   |   |
-|Tue 12/8    |   |   |   |   |
-|Wed 12/9    |   |   |   |   |
-|Thu 12/10   |   |   |   |   |
-|Fri 12/11   |   |   |   |   |
-|Sat 12/12   |   |   |   |   |
-|Sun 12/13   |   |   |   |   |
-|Mon 12/14   |   |   |   |   |
-|Tue 12/15   |   |   |   |   |
-|Wed 12/16   |   |   |   |   |
-
-
-  * Monday Dec 7
-     * __6:30-8:30pm checkin__
-        * Goal - Finish DTR
-        * Read through overview iteration 1, skim 2 & 3
+  * __Monday Dec 7__
+     * Goal - Finish DTR
+     * Read through overview iteration 1, skim 2 & 3
   
-  * Tuesday Dec 8
-     * __7:45-8:45am checkin__
-     * __6:30-8:30pm checkin__
-  
-  * Wednesday Dec 9
-      * __7:45-8:45am checkin__
-      * __Project time 3-4pm MST__
-      * __6:30-8:30pm checkin__
-  
-  * Thursday Dec 10
-      * __7:30-8:15am  checkin__
-      * __Project time 1-4pm MST__
-      * _tentative 6:30-8:30pm checkin_
-        * Goal - Iterations 1 & half of 2 is complete, no check in required.
+  * __Thursday Dec 10__
+     * Original Goal - Iterations 1 & half of 2 is complete, then no check in required on Thursday.
+     * Actual progress - Completed Iteration 1 and 25% of iteration 2.
   
   * Friday Dec 11
-      * __7:45-8:45am checkin__
-      * __5:00-6:00pm checkin__
-      * __Take the time to re-DTR__
+      * __re-DTR from 9:50-10:30__
+      * Project time today during class from 1-2:15pm MST
   
-  * Saturday Dec 12
-      * __10:00am-2:00pm checkin (lunch break some point)__
-        * _tentative independent code_
+  * __Saturday Dec 12__
+      * _After Saturday's project time GOAL is to have iteration 2 complete and starting iteration 3_
+      * If we meet our goal, schedule stays the same on Sunday. If not, we may need to add more time after 2pm MST/4pm EST.
   
   * Sunday Dec 13
-      * __10:00am-2:00pm checkin (lunch break some point)__
-        * if we split up blocks of code indepently we can review together and merge accordingly
+      * Goal is to have as much as we can get through in iteration 3, if we feel like we are not in a good place with i3 then we will add two hours to stop at 4pm MST/6pm EST.
+        * Genevieve - hard stop @ 5:00pm MST
   
   * Monday Dec 14
-      * __7:45-8:45am checkin__
-      * __6:30-8:30pm checkin__
+       * _Tentative evening project time if we feel we need it following 6:30 MST/8:30 EST am session_
   
   * Tuesday Dec 15
-      * __7:45-8:45am checkin__
-      * __Project time 1-4pm MST__
-      * __6:30-8:30pm checkin__
-         * Goal is to be complete with iteration 3
+      * Goal is to be complete with iteration 3 by Tuesday evening session.
          * if we are complete with I3 then we will use this time to refactor
     
   * Dec 16
