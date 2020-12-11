@@ -35,14 +35,15 @@ class BoardTest < Minitest::Test
   end
 
   def test_ship_has_valid_placement_letter_coordinates_consecutive
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
 
     assert_equal false, board.valid_placement?(submarine, ["A1", "C1"])
-    assert_equal [65, 67], board.coordinates_ords
+    assert_equal [65, 67], board.coordinates_ords(["A1", "C1"])
 
-    assert_equal [[65, 66], [66, 67], [67, 68], [68, 69]], board.ordinates_consecutive
+    assert_equal [[65, 66], [66, 67], [67, 68], [68, 69]], board.ordinates_consecutive(["A1", "C1"])
     assert_equal false, board.valid_placement?(submarine, ["A1", "C1"])
   end
   # above test is passing, and not failing as expected
@@ -55,10 +56,10 @@ class BoardTest < Minitest::Test
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
 
-    assert_equal false, board.valid_placement?(cruiser, ["A1", "A2"])
-    assert_equal [1, 2], board.coordinates_nums
+    assert_equal false, board.valid_placement?(cruiser, ["A1", "A2", "A4"])
+    assert_equal [1, 2, 4], board.coordinates_nums(["A1", "A2", "A4"])
 
-    assert_equal [[1, 2], [2, 3], [3, 4]], board.num_cons
+    assert_equal [[1, 2, 3], [2, 3, 4]], board.numbers_consecutive(["A1", "A2", "A4"])
     assert_equal false, board.valid_placement?(cruiser, ["A1", "A2", "A4"])
   end
 end
