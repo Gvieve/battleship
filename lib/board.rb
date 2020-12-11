@@ -27,59 +27,20 @@ class Board
     @cells.has_key?(coordinate)
   end
 
-  def letters
-    board_letters = []
-    cells.keys.each do |letter|
-      board_letters << letter[0]
-    end
-    board_letters.uniq
-  end
-
-  def consecutive_letters
-    letters_validation = []
-    letters.each_cons(3) do |letter|
-      letters_validation << letter
-    end
-
-    letters.each_cons(2) do |letter|
-      letters_validation << letter
-    end
-    letters_validation
-  end
-
-  def numbers
-    board_numbers = []
-    cells.keys.each do |number|
-      board_numbers << number[1]
-    end
-    board_numbers.uniq
-  end
-
-  def consecutive_numbers
-    numbers_validation = []
-    numbers.each_cons(3) do |number|
-      numbers_validation << number
-    end
-
-    numbers.each_cons(2) do |number|
-      numbers_validation << number
-    end
-    numbers_validation
-  end
-
-  def valid_placement?(ship, coordinates)
-    # require "pry"; binding.pry
-    @coordinates = coordinates
-    (coordinates.count == ship.length) &&
-    (num_cons.include?(coordinates_nums))
-  end
-
   def coordinates_ords
     ords = []
     coordinates.each do |coordinate|
       ords << coordinate.chop.ord
     end
     ords.uniq
+  end
+
+  def ordinates_consecutive
+    consecutive_letter_ordinals = []
+    (65..69).each_cons(coordinates.count) do |n|
+      consecutive_letter_ordinals << n
+    end
+    consecutive_letter_ordinals
   end
 
   def coordinates_nums
@@ -90,11 +51,19 @@ class Board
     nums.uniq
   end
 
+# we are stuck here and on valid_placement?
   def num_cons
-    consecutive = []
+    consecutive_numbers = []
     (1..4).each_cons(coordinates.count) do |n|
-      consecutive << n
+      consecutive_numbers << n
     end
-    consecutive
+    consecutive_numbers
+  end
+
+  def valid_placement?(ship, coordinates)
+    require "pry"; binding.pry
+    @coordinates = coordinates
+    (coordinates.count == ship.length) &&
+    (num_cons.include?(coordinates_nums))
   end
 end
