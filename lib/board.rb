@@ -59,11 +59,33 @@ class Board
     consecutive_numbers
   end
 
+  def ship_length_valid?(ship, coordinates)
+    coordinates.count == ship.length
+  end
+
+  def ship_letter_coords_valid?(ship, coordinates)
+    (ordinates_consecutive(coordinates).include?(coordinates_ords(coordinates)) ||
+    (coordinates_ords(coordinates).count == 1))
+  end
+
+  def ship_number_coords_valid?(ship, coordinates)
+    (numbers_consecutive(coordinates).include?(coordinates_nums(coordinates)) ||
+    (coordinates_nums(coordinates).count == 1))
+  end
+
+  def ship_diagonal_coords_valid?(ship, coordinates)
+    (((ship_number_coords_valid?(ship, coordinates)) &&
+    (ship_letter_coords_valid?(ship, coordinates))) &&
+    (coordinates_ords(coordinates).count == 1))
+
+  end
+
   def valid_placement?(ship, coordinates)
     # require "pry"; binding.pry
     @coordinates = coordinates
-    ((coordinates.count == ship.length) &&
-    ((numbers_consecutive(coordinates).include?(coordinates_nums(coordinates)) ||
-    (coordinates_nums(coordinates).count == 1))))
+    ((ship_length_valid?(ship, coordinates)) &&
+    (ship_letter_coords_valid?(ship, coordinates)) &&
+    (ship_number_coords_valid?(ship, coordinates)) &&
+    (ship_diagonal_coords_valid?(ship, coordinates)))
   end
 end
