@@ -76,16 +76,29 @@ class Board
   def ship_diagonal_coords_valid?(ship, coordinates)
     (((ship_number_coords_valid?(ship, coordinates)) &&
     (ship_letter_coords_valid?(ship, coordinates))) &&
-    (coordinates_ords(coordinates).count == 1))
+    (coordinates_ords(coordinates).count == 1) ||
+    ((ship_number_coords_valid?(ship, coordinates)) &&
+    (ship_letter_coords_valid?(ship, coordinates))) &&
+    (coordinates_nums(coordinates).count == 1))
 
   end
 
   def valid_placement?(ship, coordinates)
-    # require "pry"; binding.pry
     @coordinates = coordinates
     ((ship_length_valid?(ship, coordinates)) &&
     (ship_letter_coords_valid?(ship, coordinates)) &&
     (ship_number_coords_valid?(ship, coordinates)) &&
     (ship_diagonal_coords_valid?(ship, coordinates)))
+  end
+
+  def place(ship, coordinates)
+    # require "pry"; binding.pry
+    if valid_placement?(ship, coordinates) == true
+      cells.each do |coord, cell|
+        if coordinates.include?(coord)
+          cell.place_ship(ship)
+        end
+      end
+    end
   end
 end
