@@ -6,6 +6,7 @@ require './lib/board'
 
 class BoardTest < Minitest::Test
   def test_it_exists_and_has_cells
+    skip
     board = Board.new
 
     assert_instance_of Board, board
@@ -13,6 +14,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_cells_have_valid_coordinate
+    skip
     board = Board.new
 
     assert_equal true, board.valid_coordinate?("A1")
@@ -23,6 +25,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_ship_has_valid_placement_length_of_ship
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -33,6 +36,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_ship_has_valid_placement_letter_coordinates_consecutive
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -45,6 +49,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_ship_has_valid_placement_number_coordinates_consecutive
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -57,6 +62,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_ship_coordinates_cant_be_diagonal
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -66,6 +72,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_checks_pass_valid_placement
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -75,6 +82,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_placing_ships
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     board.place(cruiser, ["A1", "A2", "A3"])
@@ -89,11 +97,25 @@ class BoardTest < Minitest::Test
   end
 
   def test_placing_ships_invalid_coordinates
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     board.place(cruiser, ["A1", "A2", "A4"])
-    # require "pry"; binding.pry
+
     assert_equal false, board.valid_placement?(cruiser, ["A1", "A2", "A4"])
     assert_equal nil, board.cells["A1"].ship
+    assert_equal false, board.valid_placement?(cruiser, ["D3", "D4", "D5"])
+    assert_equal nil, board.cells["D3"].ship
+  end
+
+  def test_overlapping_ships_cant_be_placed
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    board.place(cruiser, ["A1", "A2", "A3"])
+    submarine = Ship.new("Submarine", 2)
+    # require "pry"; binding.pry
+
+    assert_equal false, board.overlapping_ship?(["A1", "B1"])
+    assert_equal false, board.valid_placement?(submarine, ["A1", "B1"])
   end
 end
