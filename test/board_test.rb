@@ -113,9 +113,19 @@ class BoardTest < Minitest::Test
     cruiser = Ship.new("Cruiser", 3)
     board.place(cruiser, ["A1", "A2", "A3"])
     submarine = Ship.new("Submarine", 2)
-    # require "pry"; binding.pry
 
     assert_equal false, board.overlapping_ship?(["A1", "B1"])
     assert_equal false, board.valid_placement?(submarine, ["A1", "B1"])
+  end
+
+  def test_if_board_renders
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    board.place(cruiser, ["A1", "A2", "A3"])
+
+    expected = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
+    assert_equal expected, board.render
+    expected = "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n"
+    assert_equal expected, board.render(true)
   end
 end

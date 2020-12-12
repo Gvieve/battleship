@@ -107,4 +107,37 @@ class Board
       end
     end
   end
+
+  def render(show_ship = false)
+    # line_1 = "  1 2 3 4 \n"
+    board_cell = []
+    cells.each do |coord, cell|
+      board_cell << cell.render
+    #   require "pry"; binding.pry
+    # "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
+    end
+
+    row = []
+    board_cell.each do |cell|
+      row << cell + " "
+    end
+
+    combined_rows = []
+    row.each_slice(4) do |new|
+      combined_rows << new.push("\n")
+    end
+
+    cell_letters = []
+    cells.each do |key, value|
+      cell_letters << key.chop
+    end
+    y = cell_letters.uniq
+
+    letter = []
+    combined_rows.each do |x|
+      require "pry"; binding.pry
+      letter << x.unshift("A")
+    end
+    board_cell
+  end
 end
