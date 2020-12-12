@@ -83,16 +83,22 @@ class Board
 
   end
 
+  def overlapping_ship?(coordinates)
+    coordinates.all? do |cell|
+      cells[cell].ship.nil?
+    end
+  end
+
   def valid_placement?(ship, coordinates)
     @coordinates = coordinates
     ((ship_length_valid?(ship, coordinates)) &&
     (ship_letter_coords_valid?(ship, coordinates)) &&
     (ship_number_coords_valid?(ship, coordinates)) &&
-    (ship_diagonal_coords_valid?(ship, coordinates)))
+    (ship_diagonal_coords_valid?(ship, coordinates)) &&
+    (overlapping_ship?(coordinates)))
   end
 
   def place(ship, coordinates)
-    # require "pry"; binding.pry
     if valid_placement?(ship, coordinates) == true
       cells.each do |coord, cell|
         if coordinates.include?(coord)
