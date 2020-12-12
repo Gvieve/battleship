@@ -107,4 +107,12 @@ class Board
       end
     end
   end
+
+  def render(show_ship = false)
+    # line_1 = "  1 2 3 4 \n"
+    cells.each do |coord, cell|
+      require "pry"; binding.pry
+    "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
+    end
+  end
 end
