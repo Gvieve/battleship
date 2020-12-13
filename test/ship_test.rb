@@ -3,7 +3,7 @@ require 'minitest/pride'
 require './lib/ship'
 
 class ShipTest < Minitest::Test
-  def test_it_exists_and_had_attributes
+  def test_it_exists_and_has_attributes
     cruiser = Ship.new("Cruiser", 3)
 
     assert_instance_of Ship, cruiser
