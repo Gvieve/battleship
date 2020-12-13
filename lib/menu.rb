@@ -21,16 +21,76 @@ class Menu
     "The Cruiser is three units long and the Submarine is two units long."
   end
 
-  def render
-    board.render
+  def render(show_ship = false)
+    board.render(show_ship)
   end
 
-  def enter_coords
-    "Enter the squares for the Cruiser (3 spaces):"
+  def computer_board_header
+    "=============COMPUTER BOARD============="
   end
 
-  def gets_coords
-    coords = gets.chomp
-    coords.split(" ")
+  def user_board_header
+    "==============PLAYER BOARD=============="
+  end
+
+  def enter_coords_ship1
+    "Enter the squares for the #{} (_ spaces):"
+  end
+
+  def enter_coords_ship2
+    "Enter the squares for the #{} (_ spaces):"
+  end
+
+  def invalid_coords
+    "Those are invalid coordinates. Please try again:"
+  end
+
+  def gets_ship_coords
+    ship_coords = gets.chomp
+    ship_coords.split(" ")
+  end
+
+  def user_shot
+    "Enter the coordinate for your shot:"
+  end
+
+  def gets_shot_coords
+    shot_coords = gets.chomp
+  end
+
+  def user_shot_invalid
+    "Please enter a valid coordinate:"
+  end
+
+  def user_shot_result_miss
+    "Your shot on #{} was a miss."
+  end
+
+  def computer_shot_result_miss
+    "My shot on #{} was a miss."
+  end
+
+  def user_shot_result_hit
+    "Your shot on #{} was a hit."
+  end
+
+  def computer_shot_result_hit
+    "My shot on #{} was a hit."
+  end
+
+  def user_shot_result_sunk
+    "Your shot on #{} sunk a ship."
+  end
+
+  def computer_shot_result_sunk
+    "My shot on #{} sunk a ship."
+  end
+
+  def user_won
+    "You won!"
+  end
+
+  def computer_won
+    "I won!"
   end
 end
