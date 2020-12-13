@@ -126,7 +126,7 @@ class BoardTest < Minitest::Test
 
   end
 
-  def test_if_board_renders
+  def test_if_board_renders_ship
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     board.place(cruiser, ["A1", "A2", "A3"])
