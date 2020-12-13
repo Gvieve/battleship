@@ -43,7 +43,6 @@ class Board
   end
 
   def coordinates_nums(coordinates)
-    # require "pry"; binding.pry
     nums = []
     coordinates.each do |coordinate|
       nums << coordinate[1..-1].to_i
@@ -108,36 +107,35 @@ class Board
     end
   end
 
-  def render(show_ship = false)
-    # line_1 = "  1 2 3 4 \n"
-    board_cell = []
+  def board_cell(show_ship)
+    board_cells = []
     cells.each do |coord, cell|
-      board_cell << cell.render
-    #   require "pry"; binding.pry
-    # "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
+      board_cells << " " + cell.render(show_ship)
     end
+    board_cells
+  end
 
-    row = []
-    board_cell.each do |cell|
-      row << cell + " "
+  def combined_rows(show_ship)
+    combined_row = []
+    board_cell(show_ship).each_slice(4) do |new|
+      combined_row << new.push(" \n")
     end
+    combined_row
+  end
 
-    combined_rows = []
-    row.each_slice(4) do |new|
-      combined_rows << new.push("\n")
-    end
+  def cells_letters
+    Array(cells.keys[0].chop..cells.keys[-1].chop)
+  end
 
-    cell_letters = []
-    cells.each do |key, value|
-      cell_letters << key.chop
-    end
-    y = cell_letters.uniq
+  def board_grid(show_ship)
+    cells_letters.zip(combined_rows(show_ship)).flatten.join
+  end
 
-    letter = []
-    combined_rows.each do |x|
-      require "pry"; binding.pry
-      letter << x.unshift("A")
-    end
-    board_cell
+  def header
+    "  1 2 3 4 \n"
+  end
+
+  def render(show_ship = false)
+    header + board_grid(show_ship)
   end
 end
