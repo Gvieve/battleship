@@ -6,7 +6,7 @@ class Menu
   def initialize
     @welcome  = "Welcome to BATTLESHIP"
     @play     = "Enter p to play. Enter q to quit."
-    @board    = Board.new
+    # @board    = Board.new
   end
 
   def computer_ship_placed
@@ -21,9 +21,9 @@ class Menu
     "The Cruiser is three units long and the Submarine is two units long."
   end
 
-  def render(show_ship = false)
-    board.render(show_ship)
-  end
+  # def render(show_ship = false)
+  #   board.render(show_ship)
+  # end
 
   def computer_board_header
     "=============COMPUTER BOARD============="
