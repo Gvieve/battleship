@@ -5,43 +5,48 @@ require './lib/cell'
 require './lib/board'
 require './lib/menu'
 require './lib/game'
+require './lib/player'
 
 class GameTest < Minitest::Test
   def test_it_exists_and_has_attributes
     menu = Menu.new
-    board = Board.new
-    game = Game.new(menu, board)
+    computer_board = Board.new
+    computer_player = Player.new(computer_board)
+    user_board = Board.new
+    user_player = Player.new(user_board)
+    game = Game.new(menu, computer_player, user_player)
 
     assert_instance_of Game, game
     assert_equal menu, game.menu
-    assert_equal board, game.board
-    # assert_equal "Welcome to BATTLESHIP", game.start
-    # assert_equal "Enter p to play. Enter q to quit.", menu.play
+    assert_equal computer_player, game.computer_player
+    assert_equal user_player, game.user_player
   end
 
-  # need to create two boards when creating game
   def test_computer_can_place_ships
     menu = Menu.new
-    board_1 = Board.new
-    game = Game.new(menu, board_1)
-    cruiser = Ship.new("Cruiser", 3)
-    submarine = Ship.new("Submarine", 2)
 
-    assert_equal board_1.cells, game.computer_place_ship(cruiser, ["A1", "B1", "C1"])
-    assert_equal board_1.cells, game.computer_place_ship(submarine, ["D2", "D3"])
+    computer_board = Board.new
+    computer_player = Player.new(computer_board)
+    computer_cruiser = Ship.new("Cruiser", 3)
+    computer_submarine = Ship.new("Submarine", 2)
+
+    user_board = Board.new
+    user_player = Player.new(user_board)
+    user_cruiser = Ship.new("Cruiser", 3)
+    user_submarine = Ship.new("Submarine", 2)
+
+    game = Game.new(menu, computer_player, user_player)
+
+    assert_equal computer_board.cells, game.place_ship(computer_player, computer_cruiser, ["A1", "B1", "C1"])
+    assert_equal computer_board.cells, game.place_ship(computer_player, computer_submarine, ["B2", "C2"])
+
+    game.player_board_message
+
+    game.place_ship(user_player, user_cruiser)
+
+    # assert_equal user_board.cells, game.place_ship(user_player, user_cruiser)
+    # puts menu.enter_coords_submarine
+    # assert_equal user_board.cells, game.place_ship(user_player, user_submarine)
+    # game.user_player.board.render(true) to see user board
   end
-
-  def test_player_can_place_ships
-    menu = Menu.new
-    board_1 = Board.new
-    board_2 = Board.new
-    game = Game.new(menu, board)
-    cruiser = Ship.new("Cruiser", 3)
-    submarine = Ship.new("Submarine", 2)
-
-    assert_equal "", game.player_board_message
-    assert_equal board_2.cells, game.player_place_ship(cruiser, ["A1", "B1", "C1"])
-    assert_equal board_2.cells, game.player_place_ship(submarine, ["D2", "D3"])
-  end
-
 end
