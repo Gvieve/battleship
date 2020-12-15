@@ -27,22 +27,18 @@ class MenuTest < Minitest::Test
     board = Board.new
 
     expected = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
-    assert_equal expected, menu.render
-    assert_equal "Enter the squares for the #{} (_ spaces):", menu.enter_coords_ship1
+    assert_equal "Enter the squares for the Cruiser (3 spaces):", menu.enter_coords_cruiser
     expected2 = "=============COMPUTER BOARD============="
     expected3 = "==============PLAYER BOARD=============="
     assert_equal expected2, menu.computer_board_header
     assert_equal expected3, menu.user_board_header
-    # test we can show_ship with menu.render in game class
-    # expected2 = "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n"
-    # assert_equal expected2, menu.render(true)
   end
 
   def test_user_inputs_invalid_coords_response
     menu = Menu.new
     board = Board.new
 
-    assert_equal "Enter the squares for the #{} (_ spaces):", menu.enter_coords_ship2
+    assert_equal "Enter the squares for the Submarine (2 spaces):", menu.enter_coords_submarine
     assert_equal "Those are invalid coordinates. Please try again:", menu.invalid_coords
   end
 

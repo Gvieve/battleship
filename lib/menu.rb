@@ -6,7 +6,6 @@ class Menu
   def initialize
     @welcome  = "Welcome to BATTLESHIP"
     @play     = "Enter p to play. Enter q to quit."
-    # @board    = Board.new
   end
 
   def computer_ship_placed
@@ -33,12 +32,12 @@ class Menu
     "==============PLAYER BOARD=============="
   end
 
-  def enter_coords_ship1
-    "Enter the squares for the #{} (_ spaces):"
+  def enter_coords_cruiser
+    "Enter the squares for the Cruiser (3 spaces):"
   end
 
-  def enter_coords_ship2
-    "Enter the squares for the #{} (_ spaces):"
+  def enter_coords_submarine
+    "Enter the squares for the Submarine (2 spaces):"
   end
 
   def invalid_coords
