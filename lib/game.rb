@@ -27,7 +27,7 @@ class Game
     coordinates.all? do |coordinate|
       ((player.board.valid_coordinate?(coordinate) == true )&&
        (player.board.valid_placement?(ship, coordinates) == true) &&
-       (coordinates.uniq == 3))
+       (coordinates.uniq > 1))
     end
   end
 
