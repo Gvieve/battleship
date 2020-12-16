@@ -3,11 +3,6 @@ class Menu
               :play,
               :board
 
-  # def initialize
-  #   @welcome  = "Welcome to BATTLESHIP"
-  #   @play     = "Enter p to play. Enter q to quit."
-  # end
-
   def welcome_menu
     "Welcome to BATTLESHIP\nEnter p to play. Enter q to quit."
   end
@@ -32,10 +27,6 @@ class Menu
     "The Cruiser is three units long and the Submarine is two units long."
   end
 
-  # def render(show_ship = false)
-  #   board.render(show_ship)
-  # end
-
   def computer_board_header
     "=============COMPUTER BOARD============="
   end
@@ -56,17 +47,8 @@ class Menu
     "Those are invalid coordinates. Please try again:"
   end
 
-  def gets_ship_coords
-    ship_coords = gets.chomp
-    ship_coords.split(" ")
-  end
-
   def user_shot
     "Enter the coordinate for your shot:"
-  end
-
-  def gets_shot_coords
-    shot_coords = gets.chomp
   end
 
   def user_shot_invalid
