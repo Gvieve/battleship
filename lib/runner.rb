@@ -19,3 +19,5 @@ turn.place_ship(computer_player, computer_player.submarine, ["B2", "C2"])
 game.start
 turn.display_boards
 turn.user_player_turn(user_player)
+turn.display_boards
+turn.computer_player_turn(computer_player)

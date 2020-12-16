@@ -57,7 +57,6 @@ class Turn
   def user_player_turn(user_player)
     puts "Enter the coordinate for your shot."
     user_turn_input = gets.chomp.upcase
-    # require "pry"; binding.pry
     if computer_player.board.valid_coordinate?(user_turn_input) == true
       computer_player.board.cells[user_turn_input].fire_upon
       if computer_player.board.cells[user_turn_input].render(true) == "M"
@@ -74,17 +73,17 @@ class Turn
   end
 
   def computer_player_turn(computer_player)
-    # computer_turn_input = we need to figure out logic for this
-    until user_player.board.valid_coordinate?(computer_input) && user_player.board.cells[computer_input].fired_upon? == false
-      # computer_turn_input = we need to figure out logice for this
+    computer_turn_input = user_player.board.cells.keys.sample
+    until user_player.board.valid_coordinate?(computer_turn_input) && user_player.board.cells[computer_turn_input].fired_upon? == false
+      computer_turn_input = user_player.board.cells.keys.sample
     end
-    user_player.board.cells[computer_input].fire_upon
-    if user_player.board.cells[computer_input].render(true) == "M"
-      p "Computer shot on #{computer_input} was a miss."
-    elsif user_player.board.cells[computer_input].render(true) == "H"
-      p "Computer shot on #{computer_input} was a hit."
+    user_player.board.cells[computer_turn_input].fire_upon
+    if user_player.board.cells[computer_turn_input].render(true) == "M"
+      puts "Computer shot on #{computer_turn_input} was a miss."
+    elsif user_player.board.cells[computer_turn_input].render(true) == "H"
+      puts "Computer shot on #{computer_turn_input} was a hit."
     elsif user_player.board.cells[computer_input].render(true) == "X"
-      p "Computer shot on #{computer_input} sunk your #{user_player.board.cells[computer_input].ship.name}!"
+      puts "Computer shot on #{computer_turn_input} sunk your #{user_player.board.cells[computer_input].ship.name}!"
       @user_player_ship_count += 1
     end
   end

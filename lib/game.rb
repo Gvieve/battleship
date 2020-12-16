@@ -4,7 +4,6 @@ class Game
               :user_player
 
   def initialize(turn, computer_player, user_player)
-    # @menu = menu
     @turn = turn
     @computer_player = computer_player
     @user_player = user_player
