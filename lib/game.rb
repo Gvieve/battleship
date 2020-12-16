@@ -3,53 +3,53 @@ class Game
               :computer_player,
               :user_player
 
-  def initialize(menu, computer_player, user_player)
-    @menu = menu
+  def initialize(turn, computer_player, user_player)
+    # @menu = menu
+    @turn = turn
     @computer_player = computer_player
     @user_player = user_player
   end
 
   def start
-    puts menu.welcome
-    puts menu.play
+    puts @turn.menu.welcome_menu
 
-    user_play_input = gets.chomp.downcase
-
-    if user_play_input == "p"
-    elsif user_play_input == 'q'
-      puts "Ok, goodbye."
-    else
-      puts "I'm sorry I dont understand."
-    end
-  end
-
-  def valid_coordinates(player, ship, coordinates)
-    coordinates.all? do |coordinate|
-      ((player.board.valid_coordinate?(coordinate) == true )&&
-       (player.board.valid_placement?(ship, coordinates) == true) &&
-       (coordinates.uniq == 3))
-    end
-  end
-
-  def place_ship(player, ship, coordinates = true)
-    if player == computer_player
-      player.board.place(ship, coordinates)
-    else
-      while
-      player_coordinates = gets.chomp
-      coordinates = player_coordinates.split
-        valid_coordinates(player, ship, coordinates) == false
-        puts "Those are invalid coordinates. Please try again:"
+    while user_play_input = gets.chomp.downcase
+      if user_play_input == "p"
+        puts self.player_board_message
+        self.place_user_ships
+        #play_game
+        break
+      elsif user_play_input == 'q'
+        puts @turn.menu.quit_game
+        break
+      else
+        puts @turn.menu.play_game_invalid_input
       end
-        player.board.place(ship, coordinates)
     end
   end
 
   def player_board_message
-    puts menu.computer_ship_placed
-    puts menu.lay_out
-    puts menu.ship_units
+    puts @turn.menu.computer_ship_placed
+    puts @turn.menu.lay_out
+    puts @turn.menu.ship_units
     puts user_player.board.render
-    puts menu.enter_coords_cruiser
+    puts @turn.menu.enter_coords_cruiser
+  end
+
+  def place_user_ships
+    @turn.place_ship(user_player, user_player.cruiser)
+    @turn.place_ship(user_player, user_player.submarine)
+  end
+
+  def play_game
+    # we need to create a loop to run through display_boards,
+    # computer_player_turn and user_player_turn until someone loses
+
+  end
+
+  def game_over
+    # @turn.user_player_ship_count == 2
+    # need to write logic for this, ship_count goes up when ship is sunk
+    # for either user
   end
 end

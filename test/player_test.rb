@@ -4,23 +4,17 @@ require './lib/player'
 require './lib/board'
 require './lib/cell'
 require './lib/ship'
+require './lib/menu'
 
 class PlayerTest < Minitest::Test
   def test_it_exists_and_has_attributes
-    board = Board.new
-    computer_player = Player.new(board)
+    user_player = Player.new(@board)
+    @cruiser = Ship.new("Cruiser", 3)
+    @submarine = Ship.new("Submarine", 2)
 
-    assert_instance_of Player, computer_player
-    assert_equal board, computer_player.board
-  end
-
-  def test_it_has_ships
-    board = Board.new
-    computer_player = Player.new(board)
-    cruiser = Ship.new("Cruiser", 3)
-    submarine = Ship.new("Submarine", 2)
-
-    assert_equal cruiser, computer_player.cruiser(cruiser)
-    assert_equal submarine, computer_player.submarine(submarine)
+    assert_instance_of Player, user_player
+    assert_instance_of Board, user_player.board
+    assert_instance_of Ship, user_player.cruiser
+    assert_instance_of Ship, user_player.submarine
   end
 end
