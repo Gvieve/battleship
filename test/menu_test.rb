@@ -10,8 +10,7 @@ class MenuTest < Minitest::Test
     menu = Menu.new
 
     assert_instance_of Menu, menu
-    assert_equal "Welcome to BATTLESHIP", menu.welcome
-    assert_equal "Enter p to play. Enter q to quit.", menu.play
+    assert_equal "Welcome to BATTLESHIP\nEnter p to play. Enter q to quit.", menu.welcome_menu
   end
 
   def test_computer_responds
