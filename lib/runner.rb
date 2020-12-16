@@ -12,10 +12,10 @@ computer_player = Player.new(@board)
 user_player = Player.new(@board)
 
 turn = Turn.new(menu, computer_player, user_player)
-game = Game.new(menu, computer_player, user_player)
+game = Game.new(turn, computer_player, user_player)
 
 turn.place_ship(computer_player, computer_player.cruiser, ["A1", "B1", "C1"])
 turn.place_ship(computer_player, computer_player.submarine, ["B2", "C2"])
 game.start
-turn.place_ship(user_player, user_player.cruiser)
-turn.place_ship(user_player, user_player.submarine)
+turn.display_boards
+turn.user_player_turn(user_player)
