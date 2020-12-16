@@ -55,30 +55,6 @@ class Menu
     "Please enter a valid coordinate:"
   end
 
-  def user_shot_result_miss
-    "Your shot on #{} was a miss."
-  end
-
-  def computer_shot_result_miss
-    "My shot on #{} was a miss."
-  end
-
-  def user_shot_result_hit
-    "Your shot on #{} was a hit."
-  end
-
-  def computer_shot_result_hit
-    "My shot on #{} was a hit."
-  end
-
-  def user_shot_result_sunk
-    "Your shot on #{} sunk a ship."
-  end
-
-  def computer_shot_result_sunk
-    "My shot on #{} sunk a ship."
-  end
-
   def user_won
     "You won!"
   end
