@@ -47,7 +47,6 @@ class Turn
   end
 
   def display_boards
-    # require "pry"; binding.pry
     puts menu.computer_board_header
     puts computer_player.board.render
     puts menu.user_board_header
@@ -64,7 +63,7 @@ class Turn
       elsif computer_player.board.cells[user_turn_input].render(true) == "H"
         puts "Your shot on #{user_turn_input} was a hit."
       elsif computer_player.board.cells[user_turn_input].render(true) == "X"
-        puts "Your shot sunk my #{computer.board.cells[user_turn_input].ship.name}!"
+        puts "Your shot sunk my #{computer_player.board.cells[user_turn_input].ship.name}!"
         @computer_player_ship_count += 1
       end
     else
@@ -82,10 +81,9 @@ class Turn
       puts "Computer shot on #{computer_turn_input} was a miss."
     elsif user_player.board.cells[computer_turn_input].render(true) == "H"
       puts "Computer shot on #{computer_turn_input} was a hit."
-    elsif user_player.board.cells[computer_input].render(true) == "X"
+    elsif user_player.board.cells[computer_turn_input].render(true) == "X"
       puts "Computer shot on #{computer_turn_input} sunk your #{user_player.board.cells[computer_input].ship.name}!"
       @user_player_ship_count += 1
     end
   end
-
 end

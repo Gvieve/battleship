@@ -17,7 +17,7 @@ game = Game.new(turn, computer_player, user_player)
 turn.place_ship(computer_player, computer_player.cruiser, ["A1", "B1", "C1"])
 turn.place_ship(computer_player, computer_player.submarine, ["B2", "C2"])
 game.start
-turn.display_boards
-turn.user_player_turn(user_player)
-turn.display_boards
-turn.computer_player_turn(computer_player)
+# turn.display_boards
+# turn.user_player_turn(user_player)
+# turn.display_boards
+# turn.computer_player_turn(computer_player)
