@@ -26,35 +26,6 @@ class Game
     end
   end
 
-  def valid_coordinates(player, ship, coordinates)
-    coordinates.all? do |coordinate|
-      ((player.board.valid_coordinate?(coordinate) == true ) &&
-       (player.board.valid_placement?(ship, coordinates) == true) &&
-       (coordinates.uniq.count == ship.length))
-    end
-  end
-
-  def place_ship(player, ship, coordinates = true)
-    if player == computer_player
-      player.board.place(ship, coordinates)
-    else
-
-      if ship.name == "Submarine"
-        puts menu.enter_coords_submarine
-      end
-
-        while coordinates = gets.chomp.upcase.split
-          if valid_coordinates(player, ship, coordinates) == true
-            player.board.place(ship, coordinates)
-            puts player.board.render(true)
-            break
-          else
-            puts "Those are invalid coordinates. Please try again:"
-          end
-        end
-      end
-  end
-
 # Maybe use to validate when all ships are sunk
   # def all_ships_are_not_placed(player)
   #   cells_with_ships = []
