@@ -16,7 +16,7 @@ class Game
       if user_play_input == "p"
         puts self.player_board_message
         self.place_user_ships
-        #play_game
+        self.play_game
         break
       elsif user_play_input == 'q'
         puts @turn.menu.quit_game
@@ -41,14 +41,22 @@ class Game
   end
 
   def play_game
-    # we need to create a loop to run through display_boards,
-    # computer_player_turn and user_player_turn until someone loses
+    loop do
+      @turn.display_boards
+      @turn.user_player_turn(user_player)
+      @turn.computer_player_turn(computer_player)
 
-  end
-
-  def game_over
-    # @turn.user_player_ship_count == 2
-    # need to write logic for this, ship_count goes up when ship is sunk
-    # for either user
+      if @turn.computer_player_ship_count == 2
+        puts @turn.menu.computer_won
+        self.start
+        break
+      elsif @turn.user_player_ship_count == 2
+        puts @turn.menu.user_won
+        self.start
+        break
+      else
+        next
+      end
+    end
   end
 end
