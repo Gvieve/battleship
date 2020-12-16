@@ -1,8 +1,20 @@
-# Computer always goes first
-# - will randomly fire at valid cell
-# Display appropriate messages to tell user its their turn
-# render board for user to show 'computer board' and user board with ships
-# get coordinate for user shot
-# if coord is valid then fire on computer board
-# re-render computer and player board showing Hit, Miss or Sunk
-# loop back around to beginning of turn
+require './lib/menu'
+
+class Turn
+  attr_reader :computer_player,
+              :user_player
+
+  def initialize
+    @menu = Menu.new
+    @computer_player = computer_player
+    @user_player = user_player
+  end
+
+def computer_board_render
+  require "pry"; binding.pry
+  puts @menu.computer_board_header
+
+
+end
+
+end
