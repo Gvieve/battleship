@@ -3,9 +3,21 @@ class Menu
               :play,
               :board
 
-  def initialize
-    @welcome  = "Welcome to BATTLESHIP"
-    @play     = "Enter p to play. Enter q to quit."
+  # def initialize
+  #   @welcome  = "Welcome to BATTLESHIP"
+  #   @play     = "Enter p to play. Enter q to quit."
+  # end
+
+  def welcome_menu
+    "Welcome to BATTLESHIP\nEnter p to play. Enter q to quit."
+  end
+
+  def quit_game
+    "Ok, goodbye."
+  end
+
+  def play_game_invalid_input
+    "I'm sorry I dont understand. Please enter p to play or q to quit:"
   end
 
   def computer_ship_placed
