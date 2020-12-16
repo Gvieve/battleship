@@ -1,3 +1,7 @@
+require './lib/turn'
+require './lib/player'
+require './lib/runner_restart'
+
 class Game
   attr_reader :menu,
               :computer_player,
@@ -45,14 +49,15 @@ class Game
       @turn.display_boards
       @turn.user_player_turn(user_player)
       @turn.computer_player_turn(computer_player)
-
       if @turn.computer_player_ship_count == 2
         puts @turn.menu.computer_won
-        self.start
+        restart = RunnerRestart.new
+        restart.restart
         break
       elsif @turn.user_player_ship_count == 2
         puts @turn.menu.user_won
-        self.start
+        restart = RunnerRestart.new
+        restart.restart
         break
       else
         next

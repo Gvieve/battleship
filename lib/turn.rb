@@ -54,21 +54,21 @@ class Turn
   end
 
   def user_player_turn(user_player)
-    puts "Enter the coordinate for your shot."
+    puts menu.user_shot
     user_turn_input = gets.chomp.upcase
-    if computer_player.board.valid_coordinate?(user_turn_input) == true
-      computer_player.board.cells[user_turn_input].fire_upon
-      if computer_player.board.cells[user_turn_input].render(true) == "M"
-        puts "Your shot on #{user_turn_input} was a miss."
-      elsif computer_player.board.cells[user_turn_input].render(true) == "H"
-        puts "Your shot on #{user_turn_input} was a hit."
-      elsif computer_player.board.cells[user_turn_input].render(true) == "X"
-        puts "Your shot sunk my #{computer_player.board.cells[user_turn_input].ship.name}!"
-        @computer_player_ship_count += 1
+      if computer_player.board.valid_coordinate?(user_turn_input) == true && computer_player.board.cells[user_turn_input].fired_upon? == false
+        computer_player.board.cells[user_turn_input].fire_upon
+        if computer_player.board.cells[user_turn_input].render(true) == "M"
+          puts "Your shot on #{user_turn_input} was a miss."
+        elsif computer_player.board.cells[user_turn_input].render(true) == "H"
+          puts "Your shot on #{user_turn_input} was a hit."
+        elsif computer_player.board.cells[user_turn_input].render(true) == "X"
+          puts "Your shot sunk my #{computer_player.board.cells[user_turn_input].ship.name}!"
+          @computer_player_ship_count += 1
+        end
+      else
+        puts menu.user_shot_invalid
       end
-    else
-      puts "Please enter a valid coordinate."
-    end
   end
 
   def computer_player_turn(computer_player)
@@ -82,7 +82,7 @@ class Turn
     elsif user_player.board.cells[computer_turn_input].render(true) == "H"
       puts "Computer shot on #{computer_turn_input} was a hit."
     elsif user_player.board.cells[computer_turn_input].render(true) == "X"
-      puts "Computer shot on #{computer_turn_input} sunk your #{user_player.board.cells[computer_input].ship.name}!"
+      puts "Computer shot on #{computer_turn_input} sunk your #{user_player.board.cells[computer_turn_input].ship.name}!"
       @user_player_ship_count += 1
     end
   end
