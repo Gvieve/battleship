@@ -3,25 +3,26 @@ class Game
               :computer_player,
               :user_player
 
-  def initialize(menu, computer_player, user_player)
-    @menu = menu
+  def initialize(turn, computer_player, user_player)
+    # @menu = menu
+    @turn = turn
     @computer_player = computer_player
     @user_player = user_player
   end
 
   def start
-    puts menu.welcome_menu
-
+    puts @turn.menu.welcome_menu
+require "pry"; binding.pry
     while user_play_input = gets.chomp.downcase
       if user_play_input == "p"
         puts self.player_board_message
         #play_game
         break
       elsif user_play_input == 'q'
-        puts menu.quit_game
+        puts @turn.menu.quit_game
         break
       else
-        puts menu.play_game_invalid_input
+        puts @turn.menu.play_game_invalid_input
       end
     end
   end
@@ -40,10 +41,10 @@ class Game
   # end
 
   def player_board_message
-    puts menu.computer_ship_placed
-    puts menu.lay_out
-    puts menu.ship_units
+    puts @turn.menu.computer_ship_placed
+    puts @turn.menu.lay_out
+    puts @turn.menu.ship_units
     puts user_player.board.render
-    puts menu.enter_coords_cruiser
+    puts @turn.menu.enter_coords_cruiser
   end
 end
