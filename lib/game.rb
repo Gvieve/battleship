@@ -10,24 +10,27 @@ class Game
   end
 
   def start
-    puts menu.welcome
-    puts menu.play
+    puts menu.welcome_menu
 
-    user_play_input = gets.chomp.downcase
-
-    if user_play_input == "p"
-    elsif user_play_input == 'q'
-      puts "Ok, goodbye."
-    else
-      puts "I'm sorry I dont understand."
+    while user_play_input = gets.chomp.downcase
+      if user_play_input == "p"
+        puts self.player_board_message
+        #play_game
+        break
+      elsif user_play_input == 'q'
+        puts menu.quit_game
+        break
+      else
+        puts menu.play_game_invalid_input
+      end
     end
   end
 
   def valid_coordinates(player, ship, coordinates)
     coordinates.all? do |coordinate|
-      ((player.board.valid_coordinate?(coordinate) == true )&&
+      ((player.board.valid_coordinate?(coordinate) == true ) &&
        (player.board.valid_placement?(ship, coordinates) == true) &&
-       (coordinates.uniq > 1))
+       (coordinates.uniq.count == ship.length))
     end
   end
 
@@ -35,15 +38,35 @@ class Game
     if player == computer_player
       player.board.place(ship, coordinates)
     else
-      while
-      player_coordinates = gets.chomp
-      coordinates = player_coordinates.split
-        valid_coordinates(player, ship, coordinates) == false
-        puts "Those are invalid coordinates. Please try again:"
+
+      if ship.name == "Submarine"
+        puts menu.enter_coords_submarine
       end
-        player.board.place(ship, coordinates)
-    end
+
+        while coordinates = gets.chomp.upcase.split
+          if valid_coordinates(player, ship, coordinates) == true
+            player.board.place(ship, coordinates)
+            puts player.board.render(true)
+            break
+          else
+            puts "Those are invalid coordinates. Please try again:"
+          end
+        end
+      end
   end
+
+# Maybe use to validate when all ships are sunk
+  # def all_ships_are_not_placed(player)
+  #   cells_with_ships = []
+  #   player.board.cells.find_all do |coord, cell|
+  #     # require "pry"; binding.pry
+  #     if !cell.ship.nil?
+  #       cells_with_ships << cell
+  #     end
+  #   end
+  #   # require "pry"; binding.pry
+  #   cells_with_ships.count == 5
+  # end
 
   def player_board_message
     puts menu.computer_ship_placed

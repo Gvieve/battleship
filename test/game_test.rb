@@ -43,6 +43,10 @@ class GameTest < Minitest::Test
     game.player_board_message
 
     game.place_ship(user_player, user_cruiser)
+    assert_equal false, game.all_ships_are_not_placed(user_player)
+
+    game.place_ship(user_player, user_submarine)
+
 
     # assert_equal user_board.cells, game.place_ship(user_player, user_cruiser)
     # puts menu.enter_coords_submarine
