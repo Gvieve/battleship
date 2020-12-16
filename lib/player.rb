@@ -3,7 +3,7 @@ class Player
               :cruiser,
               :submarine
 
-  def initialize
+  def initialize(board)
     @board = Board.new
     @cruiser = Ship.new("Cruiser", 3)
     @submarine = Ship.new("Submarine", 2)

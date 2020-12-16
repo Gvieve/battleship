@@ -8,8 +8,7 @@ require './lib/menu'
 
 class PlayerTest < Minitest::Test
   def test_it_exists_and_has_attributes
-    user_player = Player.new
-    @board = Board.new
+    user_player = Player.new(@board)
     @cruiser = Ship.new("Cruiser", 3)
     @submarine = Ship.new("Submarine", 2)
 
